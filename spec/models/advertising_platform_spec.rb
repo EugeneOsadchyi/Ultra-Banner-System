@@ -11,6 +11,11 @@ RSpec.describe AdvertisingPlatform, type: :model do
   it { should respond_to(:name) }
   it { should respond_to(:platform_name) }
   it { should respond_to(:url) }
+  it { should respond_to(:active) }
+
+  it "should be active by default" do
+    expect(@advertising_platform.active).to eq(true)
+  end
 
   it { should be_valid }
 
@@ -42,4 +47,5 @@ RSpec.describe AdvertisingPlatform, type: :model do
       end
     end
   end
+
 end

@@ -4,6 +4,7 @@ class CreateAdvertisingPlatforms < ActiveRecord::Migration
       t.string :name, null: false
       t.string :platform_name, null: false
       t.string :url, null: false
+      t.boolean :active, null: false, default: true
 
       t.timestamps null: false
     end
