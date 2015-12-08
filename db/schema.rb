@@ -17,21 +17,22 @@ ActiveRecord::Schema.define(version: 20151208201006) do
   enable_extension "plpgsql"
 
   create_table "advertising_platforms", force: :cascade do |t|
-    t.string   "name"
-    t.string   "platform_name"
-    t.string   "url"
+    t.string   "name",          null: false
+    t.string   "platform_name", null: false
+    t.string   "url",           null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
   create_table "banners", force: :cascade do |t|
-    t.string   "name"
-    t.string   "url"
-    t.integer  "views_count"
-    t.integer  "max_views_count"
-    t.integer  "click_count"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "name",                           null: false
+    t.string   "url",                            null: false
+    t.integer  "views_count",     default: 0,    null: false
+    t.integer  "max_views_count", default: 1,    null: false
+    t.integer  "click_count",     default: 0,    null: false
+    t.boolean  "active",          default: true, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
 end
