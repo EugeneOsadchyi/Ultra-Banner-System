@@ -2,6 +2,7 @@ class AdvertisingPlatformsController < ApplicationController
   before_action :set_advertising_platform, only: []
 
   def index
+    @advertising_platforms = AdvertisingPlatform.all
   end
 
   private
