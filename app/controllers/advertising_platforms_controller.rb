@@ -5,6 +5,10 @@ class AdvertisingPlatformsController < ApplicationController
     @advertising_platforms = AdvertisingPlatform.all
   end
 
+  def new
+    @advertising_platform = AdvertisingPlatform.new
+  end
+
   private
   def set_advertising_platform
     @advertising_platform ||= AdvertisingPlatform.find(params[:id])

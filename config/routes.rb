@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :advertising_platforms, only: [:index]
+  resources :advertising_platforms, only: [:index, :new]
 
   root 'advertising_platforms#index'
 
