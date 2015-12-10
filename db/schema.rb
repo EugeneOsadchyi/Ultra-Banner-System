@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208201006) do
+ActiveRecord::Schema.define(version: 20151210210035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20151208201006) do
     t.string   "url",                                    null: false
     t.integer  "views_count",             default: 0,    null: false
     t.integer  "max_views_count",         default: 1,    null: false
-    t.integer  "click_count",             default: 0,    null: false
+    t.integer  "clicks_count",            default: 0,    null: false
     t.boolean  "active",                  default: true, null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false

@@ -17,9 +17,9 @@
           <th>#</th>
           <th>Name</th>
           <th>Active</th>
+          <th>Clicks</th>
           <th>Views</th>
           <th>Max Views</th>
-          <th>Clicks</th>
           <th colspan="3"></th>
         </tr>
       </thead>
@@ -29,9 +29,9 @@
             <th><%= banner.id %></th>
             <td><%= banner.name %></td>
             <td><%= banner.active %></td>
+            <td><%= banner.clicks_count %></td>
             <td><%= banner.views_count %></td>
             <td><%= banner.max_views_count %></td>
-            <td><%= banner.click_count %></td>
             <td><%= link_to 'Show', advertising_platform_banner_path(@advertising_platform, banner) %></td>
             <td><%= link_to 'Edit', edit_advertising_platform_banner_path(@advertising_platform, banner) %></td>
             <td><%= link_to 'Delete', advertising_platform_banner_path(@advertising_platform, banner), method: :delete, data: { confirm: 'Are you sure?'} %></td>
