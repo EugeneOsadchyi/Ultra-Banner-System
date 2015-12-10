@@ -7,3 +7,14 @@
     <%= link_to 'Back', advertising_platform_path(@banner.advertising_platform_id), class: 'btn btn-default' %>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <dl class="dl-horizontal">
+      <dt>Clicks</dt><dd><%= @banner.click_count %></dd>
+      <dt>Views</dt><dd><%= @banner.views_count %></dd>
+      <dt>Max Views</dt><dd><%= @banner.max_views_count %></dd>
+      <dt>Active</dt><dd><%= @banner.active %></dd>
+    </dl>
+  </div>
+</div>
