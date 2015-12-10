@@ -26,14 +26,17 @@ ActiveRecord::Schema.define(version: 20151208201006) do
   end
 
   create_table "banners", force: :cascade do |t|
-    t.string   "name",                           null: false
-    t.string   "url",                            null: false
-    t.integer  "views_count",     default: 0,    null: false
-    t.integer  "max_views_count", default: 1,    null: false
-    t.integer  "click_count",     default: 0,    null: false
-    t.boolean  "active",          default: true, null: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.integer  "advertising_platform_id"
+    t.string   "name",                                   null: false
+    t.string   "url",                                    null: false
+    t.integer  "views_count",             default: 0,    null: false
+    t.integer  "max_views_count",         default: 1,    null: false
+    t.integer  "click_count",             default: 0,    null: false
+    t.boolean  "active",                  default: true, null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
+
+  add_index "banners", ["advertising_platform_id"], name: "index_banners_on_advertising_platform_id", using: :btree
 
 end

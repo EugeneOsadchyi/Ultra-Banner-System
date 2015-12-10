@@ -1,5 +1,5 @@
 class AdvertisingPlatform < ActiveRecord::Base
-  has_many :banners
+  has_many :banners, dependent: :destroy
 
   before_validation :set_platform_name #TODO before_save not works. Need better solution
 

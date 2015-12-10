@@ -1,6 +1,7 @@
 class CreateBanners < ActiveRecord::Migration
   def change
     create_table :banners do |t|
+      t.belongs_to :advertising_platform, index: true
       t.string :name, null: false
       t.string :url, null: false
       t.integer :views_count, null: false, default: 0
