@@ -57,4 +57,14 @@ RSpec.describe AdvertisingPlatform, type: :model do
     end
   end
 
+  describe "when name is already in list" do
+    before do
+      @advertising_platform_with_same_name = @advertising_platform.dup
+      @advertising_platform_with_same_name.name = @advertising_platform.name.upcase
+      @advertising_platform_with_same_name.save
+    end
+
+    it { should_not be_valid }
+  end
+
 end
