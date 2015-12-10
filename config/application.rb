@@ -22,5 +22,7 @@ module UltraBannerSystem
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.action_controller.default_url_options = { host: Settings.host, port: Settings.port }
   end
 end
