@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :advertising_platforms, only: [:index, :new, :create, :edit, :update, :show, :destroy]
+  resources :advertising_platforms do
+    resources :banners, only: [:new]
+  end
 
   root 'advertising_platforms#index'
 
