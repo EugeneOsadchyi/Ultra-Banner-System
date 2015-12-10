@@ -1,9 +1,11 @@
 class Banner < ActiveRecord::Base
   belongs_to :advertising_platform
+  mount_uploader :image, ImageUploader
 
   validates :name, presence: true
   validates :url, presence: true, url: true
   validates :max_views_count, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :image, presence: true
 
   scope :for_rotation, -> { where(active: true).where('views_count < max_views_count').order(views_count: :asc) }
 
