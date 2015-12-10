@@ -51,9 +51,9 @@ class BannersController < ApplicationController
         format.html { redirect_to @banner.url }
       end
     else
-      # respond_to do |format|
-      #   format.html { redirect_to Settings.fallback.url }
-      # end
+      respond_to do |format|
+        format.html { redirect_to Settings.fallback.url }
+      end
     end
   end
 

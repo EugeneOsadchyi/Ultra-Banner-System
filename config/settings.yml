@@ -1,0 +1,3 @@
+fallback:
+  url: 'http://google.com/'
+  image_path: ''
