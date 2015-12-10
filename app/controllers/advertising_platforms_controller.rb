@@ -1,5 +1,5 @@
 class AdvertisingPlatformsController < ApplicationController
-  before_action :set_advertising_platform, only: [:show, :destroy]
+  before_action :set_advertising_platform, only: [:edit, :update, :show, :destroy]
 
   def index
     @advertising_platforms = AdvertisingPlatform.all
@@ -24,11 +24,23 @@ class AdvertisingPlatformsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @advertising_platform.update(advertising_platform_params)
+        format.html { redirect_to @advertising_platform, notice: 'Advertising platform successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
   def destroy
     @advertising_platform.destroy
     respond_to do |format|
-      format.html { redirect_to advertising_platforms_url }
-      format.json { head :no_content }
+      format.html { redirect_to advertising_platforms_url, notice: 'Advertising platform successfully destroyed.' }
     end
   end
 
