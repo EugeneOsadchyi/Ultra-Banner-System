@@ -48,4 +48,13 @@ RSpec.describe AdvertisingPlatform, type: :model do
     end
   end
 
+  describe "when name is not provided" do
+    before { @advertising_platform = AdvertisingPlatform.new(url: 'http://uturbo.pp.ua/') }
+
+    it "should be invalid" do
+      @advertising_platform.save
+      expect(@advertising_platform).not_to be_valid
+    end
+  end
+
 end
