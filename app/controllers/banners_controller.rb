@@ -44,6 +44,19 @@ class BannersController < ApplicationController
     end
   end
 
+  def click
+    if @banner.enabled?
+      @banner.increment_clicks!
+      respond_to do |format|
+        format.html { redirect_to @banner.url }
+      end
+    else
+      # respond_to do |format|
+      #   format.html { redirect_to Settings.fallback.url }
+      # end
+    end
+  end
+
   private
   def set_banner
     @banner ||= Banner.find(params[:id])

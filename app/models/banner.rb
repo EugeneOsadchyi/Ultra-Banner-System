@@ -5,16 +5,23 @@ class Banner < ActiveRecord::Base
   validates :url, presence: true, url: true
   validates :max_views_count, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
-  def incriment_clicks
+  def enabled?
+    self.active && self.views_count <= self.max_views_count
+  end
+
+  def increment_clicks!
     self.clicks_count += 1
+    self.save
   end
 
-  def incriment_views
+  def increment_views!
     self.views_count += 1
+    self.save
   end
 
-  def reset_counters
+  def reset_counters!
     self.clicks_count = 0
     self.views_count = 0
+    self.save
   end
 end

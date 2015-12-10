@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
   resources :advertising_platforms do
-    resources :banners
+    resources :banners do
+      member do
+        get :click
+      end
+    end
   end
 
 
