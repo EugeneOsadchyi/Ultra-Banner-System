@@ -32,9 +32,9 @@
             <td><%= banner.views_count %></td>
             <td><%= banner.max_views_count %></td>
             <td><%= banner.click_count %></td>
-            <td><%= link_to 'Show', banner_path(banner) %></td>
-            <td><%= link_to 'Edit', edit_banner_path(banner) %></td>
-            <td><%= link_to 'Delete', banner_path(banner), method: :delete, data: { confirm: 'Are you sure?'} %></td>
+            <td><%= link_to 'Show', advertising_platform_banner_path(@advertising_platform, banner) %></td>
+            <td><%= link_to 'Edit', edit_advertising_platform_banner_path(@advertising_platform, banner) %></td>
+            <td><%= link_to 'Delete', advertising_platform_banner_path(@advertising_platform, banner), method: :delete, data: { confirm: 'Are you sure?'} %></td>
           </tr>
         <% end %>
       </tbody>

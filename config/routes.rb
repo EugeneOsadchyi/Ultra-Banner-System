@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  shallow do
-    resources :advertising_platforms do
-      resources :banners
-    end
+
+  resources :advertising_platforms do
+    resources :banners
   end
+
 
   root 'advertising_platforms#index'
 
