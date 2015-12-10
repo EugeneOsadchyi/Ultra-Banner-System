@@ -1,5 +1,5 @@
 class AdvertisingPlatformsController < ApplicationController
-  before_action :set_advertising_platform, only: [:edit, :update, :show, :destroy]
+  before_action :set_advertising_platform, except: [:index, :new]
 
   def index
     @advertising_platforms = AdvertisingPlatform.all
@@ -41,6 +41,21 @@ class AdvertisingPlatformsController < ApplicationController
     @advertising_platform.destroy
     respond_to do |format|
       format.html { redirect_to advertising_platforms_url, notice: 'Advertising platform successfully destroyed.' }
+    end
+  end
+
+  def advertisement
+    @banner = @advertising_platform.relevant_banner
+    
+    unless @banner
+      respond_to do |format|
+        format.html { render nothing: true, status: 401 }
+      end
+    else
+      @banner.increment_views!
+      respond_to do |format|
+        format.html { render layout: false }
+      end
     end
   end
 

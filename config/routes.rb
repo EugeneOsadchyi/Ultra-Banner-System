@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :advertising_platforms do
+    match :advertisement, via: :get, on: :member
+
     resources :banners do
       member do
         get :click

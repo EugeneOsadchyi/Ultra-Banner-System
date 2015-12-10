@@ -7,6 +7,11 @@ class AdvertisingPlatform < ActiveRecord::Base
   validates :platform_name, presence: true
   validates :url, presence: true, url: true
 
+  def relevant_banner
+    self.banners.for_rotation.first
+  end
+
+  private
   def set_platform_name
     self.platform_name = self.name.parameterize('_') if self.name
   end

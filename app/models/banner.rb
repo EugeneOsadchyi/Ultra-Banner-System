@@ -5,6 +5,8 @@ class Banner < ActiveRecord::Base
   validates :url, presence: true, url: true
   validates :max_views_count, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
+  scope :for_rotation, -> { where(active: true).where('views_count < max_views_count').order(views_count: :asc) }
+
   def enabled?
     self.active && self.views_count <= self.max_views_count
   end
