@@ -6,6 +6,7 @@
     <%= f.input :active %>
   </div>
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', advertising_platforms_path, class: 'btn btn-default' %>
   </div>
 <% end %>
