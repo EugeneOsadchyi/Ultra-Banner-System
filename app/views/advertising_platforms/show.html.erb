@@ -31,9 +31,9 @@
             <td><%= banner.views_count %></td>
             <td><%= banner.max_views_count %></td>
             <td><%= banner.click_count %></td>
-            <td><%= link_to 'Show', '#' %></td>
+            <td><%= link_to 'Show', banner_path(banner) %></td>
             <td><%= link_to 'Edit', '#' %></td>
-            <td><%= link_to 'Delete', '#', method: :delete, data: { confirm: 'Are you sure?'} %></td>
+            <td><%= link_to 'Delete', banner_path(banner), method: :delete, data: { confirm: 'Are you sure?'} %></td>
           </tr>
         <% end %>
       </tbody>
