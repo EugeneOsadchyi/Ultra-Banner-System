@@ -20,7 +20,7 @@
           <th>Clicks</th>
           <th>Views</th>
           <th>Max Views</th>
-          <th colspan="3"></th>
+          <th colspan="4"></th>
         </tr>
       </thead>
       <tbody>
@@ -34,6 +34,7 @@
             <td><%= banner.max_views_count %></td>
             <td><%= link_to 'Show', advertising_platform_banner_path(@advertising_platform, banner) %></td>
             <td><%= link_to 'Edit', edit_advertising_platform_banner_path(@advertising_platform, banner) %></td>
+            <td><%= link_to 'Reset counters', reset_advertising_platform_banner_path(@advertising_platform, banner) %></td>
             <td><%= link_to 'Delete', advertising_platform_banner_path(@advertising_platform, banner), method: :delete, data: { confirm: 'Are you sure?'} %></td>
           </tr>
         <% end %>

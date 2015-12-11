@@ -10,7 +10,7 @@ class AdvertisingPlatformsController < ApplicationController
   end
 
   def show
-    @banners = @advertising_platform.banners
+    @banners = @advertising_platform.banners.order(id: :asc)
   end
 
   def create
@@ -45,17 +45,19 @@ class AdvertisingPlatformsController < ApplicationController
   end
 
   def advertisement
-    @banner = @advertising_platform.relevant_banner
-    
-    unless @banner
-      respond_to do |format|
-        format.html { render nothing: true, status: 401 }
+    if @advertising_platform.active?
+      if @banner = @advertising_platform.relevant_banner
+        @banner.increment_views!
+        respond_to do |format|
+          format.html { render layout: false }
+        end
+        return
       end
-    else
-      @banner.increment_views!
-      respond_to do |format|
-        format.html { render layout: false }
-      end
+
+    end
+
+    respond_to do |format|
+      format.html { render nothing: true, status: 401 }
     end
   end
 

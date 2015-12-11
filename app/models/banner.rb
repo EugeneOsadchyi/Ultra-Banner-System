@@ -5,12 +5,15 @@ class Banner < ActiveRecord::Base
   validates :name, presence: true
   validates :url, presence: true, url: true
   validates :max_views_count, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :image, presence: true
 
-  scope :for_rotation, -> { where(active: true).where('views_count < max_views_count').order(views_count: :asc) }
+  scope :for_rotation, -> { where(active: true).where('views_count < max_views_count').where.not(image: nil).order(views_count: :asc) }
 
   def enabled?
-    self.active && self.views_count <= self.max_views_count
+    self.active? && self.views_count <= self.max_views_count
+  end
+
+  def active?
+    self.active
   end
 
   def increment_clicks!

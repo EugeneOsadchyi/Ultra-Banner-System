@@ -44,6 +44,11 @@ class BannersController < ApplicationController
     end
   end
 
+  def reset
+    @banner.reset_counters!
+    redirect_to :back
+  end
+
   def click
     if @banner.enabled?
       @banner.increment_clicks!
@@ -67,6 +72,6 @@ class BannersController < ApplicationController
   end
 
   def banner_params
-    params.require(:banner).permit(:name, :url, :max_views_count, :image, :remote_image_url, :active)
+    params.require(:banner).permit(:name, :url, :max_views_count, :image, :remote_image_url, :remove_image, :active)
   end
 end
