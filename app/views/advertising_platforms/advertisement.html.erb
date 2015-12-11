@@ -1,3 +1,3 @@
-<%= link_to click_advertising_platform_banner_path(@advertising_platform, @banner) do %>
+<%= link_to click_advertising_platform_banner_path(@advertising_platform, @banner), :target => "_blank" do %>
   <%= image_tag @banner.image_url(:banner).to_s %>
 <% end %>
