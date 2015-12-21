@@ -15,6 +15,9 @@
 # Ignore image uploads
 /public/uploads
 
+# Ignore idea files
+/.idea
+
 # Ignore local config settings
 config/settings.local.yml
 config/settings/*.local.yml

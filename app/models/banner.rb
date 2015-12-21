@@ -16,16 +16,6 @@ class Banner < ActiveRecord::Base
     self.active
   end
 
-  def increment_clicks!
-    self.clicks_count += 1
-    self.save
-  end
-
-  def increment_views!
-    self.views_count += 1
-    self.save
-  end
-
   def reset_counters!
     self.clicks_count = 0
     self.views_count = 0
