@@ -51,7 +51,7 @@ class BannersController < ApplicationController
 
   def click
     if @banner.enabled?
-      @banner.increment!(:clicks_count)
+      @banner.increment_clicks!
       respond_to do |format|
         format.html { redirect_to @banner.url }
       end
