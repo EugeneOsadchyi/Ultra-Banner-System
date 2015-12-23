@@ -24,5 +24,9 @@ module UltraBannerSystem
     config.active_record.raise_in_transactional_callbacks = true
 
     config.action_controller.default_url_options = { host: Settings.host, port: Settings.port }
+
+    config.generators do |g|
+      g.fixture_replacement :factory_girl
+    end
   end
 end
