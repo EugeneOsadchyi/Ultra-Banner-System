@@ -50,6 +50,8 @@ class BannersController < ApplicationController
   end
 
   def click
+    # Т.к. метод AdvertisingPlatformsController#advertisement не использует блокировок, то
+    # views_count вполне может быть больше max_views_count и клик по такому банеру не будет учтен
     if @banner.enabled?
       @banner.increment_clicks!
       respond_to do |format|

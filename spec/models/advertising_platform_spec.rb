@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe AdvertisingPlatform, type: :model do
 
   before do
+    # Использование let предпочтительнее, чем instance variables
     @advertising_platform = AdvertisingPlatform.new(name: 'Ultra Turbo Rocket', platform_name: 'ultra_turbo_rocket', url: 'http://uturbo.pp.ua/')
   end
 
@@ -58,6 +59,9 @@ RSpec.describe AdvertisingPlatform, type: :model do
   end
 
   describe "when name is already in list" do
+    # Реализация теста не сотствует описанию.
+    # Нужно проверять не просто валидность объека, а наличие ошибки конкретного типа на кокретном поле
+    # Та же проблема и в других тестах валидации
     before do
       @advertising_platform_with_same_name = @advertising_platform.dup
       @advertising_platform_with_same_name.name = @advertising_platform.name.upcase

@@ -2,7 +2,9 @@ class AdvertisingPlatformsController < ApplicationController
   before_action :set_advertising_platform, except: [:index, :new]
 
   def index
+    # @todo Pagination requires
     @advertising_platforms = AdvertisingPlatform.all
+
   end
 
   def new
@@ -10,11 +12,13 @@ class AdvertisingPlatformsController < ApplicationController
   end
 
   def show
+    # @todo Pagination required
     @banners = @advertising_platform.banners.order(id: :asc)
   end
 
   def create
     @advertising_platform = AdvertisingPlatform.new(advertising_platform_params)
+    # Зачем используется respond_to при единственно возможном формате ответа? Эта же проблема в других controllers/actions
     respond_to do |format|
       if @advertising_platform.save
         format.html { redirect_to @advertising_platform, notice: 'Advertising platform successfully created.' }
