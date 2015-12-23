@@ -43,7 +43,7 @@ class AdvertisingPlatformsController < ApplicationController
   def advertisement
     if @advertising_platform.active?
       if @banner = @advertising_platform.relevant_banner
-        @banner.increment_views!
+        Banner.increment_views(@banner.id)
         render layout: false
         return
       end

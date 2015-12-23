@@ -1,7 +1,7 @@
 class BannersController < ApplicationController
   before_action :authenticate_admin!, except: [:click]
   before_action :set_banner, except: [:index, :new, :create, :reset]
-  before_action :set_advertising_platform, except: [:reset]
+  before_action :set_advertising_platform, except: [:show, :reset, :click]
 
   def index
     redirect_to @advertising_platform
@@ -46,7 +46,7 @@ class BannersController < ApplicationController
 
   def click
     if @banner.enabled?
-      @banner.increment_clicks!
+      Banner.increment_clicks(@banner.id)
       redirect_to @banner.url
     else
       redirect_to Settings.fallback.url
