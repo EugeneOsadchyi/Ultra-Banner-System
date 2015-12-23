@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins, path: 'auth'
 
   resources :advertising_platforms do
     match :advertisement, via: :get, on: :member

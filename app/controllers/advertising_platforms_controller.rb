@@ -1,4 +1,5 @@
 class AdvertisingPlatformsController < ApplicationController
+  before_action :authenticate_admin!, except: [:advertisement]
   before_action :set_advertising_platform, except: [:index, :new, :create]
 
   def index

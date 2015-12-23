@@ -1,4 +1,5 @@
 class BannersController < ApplicationController
+  before_action :authenticate_admin!, except: [:click]
   before_action :set_banner, except: [:index, :new, :create, :reset]
   before_action :set_advertising_platform, except: [:reset]
 
