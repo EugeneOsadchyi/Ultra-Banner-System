@@ -17,12 +17,11 @@ ActiveRecord::Schema.define(version: 20151210223653) do
   enable_extension "plpgsql"
 
   create_table "advertising_platforms", force: :cascade do |t|
-    t.string   "name",                         null: false
-    t.string   "platform_name",                null: false
-    t.string   "url",                          null: false
-    t.boolean  "active",        default: true, null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "name",                      null: false
+    t.string   "url",                       null: false
+    t.boolean  "active",     default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "banners", force: :cascade do |t|
