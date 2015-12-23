@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
     resources :banners do
       member do
-        get :reset
+        post :reset
         get :click
       end
     end

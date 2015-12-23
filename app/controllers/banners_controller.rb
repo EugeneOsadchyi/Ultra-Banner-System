@@ -1,6 +1,6 @@
 class BannersController < ApplicationController
-  before_action :set_banner, except: [:index, :new, :create]
-  before_action :set_advertising_platform
+  before_action :set_banner, except: [:index, :new, :create, :reset]
+  before_action :set_advertising_platform, except: [:reset]
 
   def index
     redirect_to @advertising_platform
@@ -39,7 +39,7 @@ class BannersController < ApplicationController
   end
 
   def reset
-    @banner.reset_counters!
+    Banner.reset_counters(params[:id])
     redirect_to :back
   end
 
