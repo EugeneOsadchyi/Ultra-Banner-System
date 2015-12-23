@@ -1,8 +1,8 @@
 class AdvertisingPlatformsController < ApplicationController
-  before_action :set_advertising_platform, except: [:index, :new]
+  before_action :set_advertising_platform, except: [:index, :new, :create]
 
   def index
-    @advertising_platforms = AdvertisingPlatform.all
+    @advertising_platforms = AdvertisingPlatform.order(:id).page(params[:page])
   end
 
   def new
@@ -10,17 +10,16 @@ class AdvertisingPlatformsController < ApplicationController
   end
 
   def show
-    @banners = @advertising_platform.banners.order(id: :asc)
+    @banners = @advertising_platform.banners.order(:id).page(params[:page])
   end
 
   def create
     @advertising_platform = AdvertisingPlatform.new(advertising_platform_params)
-    respond_to do |format|
-      if @advertising_platform.save
-        format.html { redirect_to @advertising_platform, notice: 'Advertising platform successfully created.' }
-      else
-        format.html { render :new }
-      end
+
+    if @advertising_platform.save
+      redirect_to @advertising_platform, notice: 'Advertising platform successfully created.'
+    else
+      render :new
     end
   end
 
@@ -28,37 +27,27 @@ class AdvertisingPlatformsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @advertising_platform.update(advertising_platform_params)
-        format.html { redirect_to @advertising_platform, notice: 'Advertising platform successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @advertising_platform.update(advertising_platform_params)
+      redirect_to advertising_platforms_url, notice: 'Advertising platform successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @advertising_platform.destroy
-    respond_to do |format|
-      format.html { redirect_to advertising_platforms_url, notice: 'Advertising platform successfully destroyed.' }
-    end
+    redirect_to advertising_platforms_url, notice: 'Advertising platform successfully destroyed.'
   end
 
   def advertisement
     if @advertising_platform.active?
       if @banner = @advertising_platform.relevant_banner
         @banner.increment_views!
-        respond_to do |format|
-          format.html { render layout: false }
-        end
+        render layout: false
         return
       end
-
     end
-
-    respond_to do |format|
-      format.html { render nothing: true, status: 401 }
-    end
+    render nothing: true, status: 401
   end
 
   private

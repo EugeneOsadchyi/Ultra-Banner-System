@@ -12,12 +12,10 @@ class BannersController < ApplicationController
 
   def create
     @banner = @advertising_platform.banners.build(banner_params)
-    respond_to do |format|
-      if @banner.save
-        format.html { redirect_to advertising_platform_banner_path(@advertising_platform, @banner), notice: "Banner successfully created." }
-      else
-        format.html { redirect_to :new }
-      end
+    if @banner.save
+      redirect_to advertising_platform_banner_path(@advertising_platform, @banner), notice: 'Banner successfully created.'
+    else
+      redirect_to :new
     end
   end
 
@@ -28,20 +26,16 @@ class BannersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @banner.update(banner_params)
-        format.html { redirect_to advertising_platform_banner_path(@advertising_platform, @banner), notice: 'Banner successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @banner.update(banner_params)
+      redirect_to advertising_platform_banner_path(@advertising_platform, @banner), notice: 'Banner successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @banner.destroy
-    respond_to do |format|
-      format.html { redirect_to @advertising_platform, notice: "Bunner successfully deleted."}
-    end
+    redirect_to @advertising_platform, notice: 'Bunner successfully deleted.'
   end
 
   def reset
@@ -52,13 +46,9 @@ class BannersController < ApplicationController
   def click
     if @banner.enabled?
       @banner.increment_clicks!
-      respond_to do |format|
-        format.html { redirect_to @banner.url }
-      end
+      redirect_to @banner.url
     else
-      respond_to do |format|
-        format.html { redirect_to Settings.fallback.url }
-      end
+      redirect_to Settings.fallback.url
     end
   end
 
