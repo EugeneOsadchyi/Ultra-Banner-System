@@ -35,7 +35,7 @@ class BannersController < ApplicationController
 
   def destroy
     @banner.destroy
-    redirect_to @advertising_platform, notice: 'Bunner successfully deleted.'
+    redirect_to @advertising_platform, notice: 'Banner successfully deleted.'
   end
 
   def reset
