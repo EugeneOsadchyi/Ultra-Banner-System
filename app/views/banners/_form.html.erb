@@ -6,7 +6,6 @@
     <%= f.input :max_views_count, input_html: { min: 1 } %>
     <%= f.input :remote_image_url %>
     <%= f.input :image, as: :file %>
-    <%= f.input :remove_image, as: :boolean if @banner.persisted? %>
     <%= f.input :active %>
   </div>
   <div class="form-actions">
