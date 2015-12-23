@@ -18,7 +18,7 @@ class AdvertisingPlatformsController < ApplicationController
     @advertising_platform = AdvertisingPlatform.new(advertising_platform_params)
 
     if @advertising_platform.save
-      redirect_to @advertising_platform, success: 'Advertising platform successfully created.'
+      redirect_to @advertising_platform, notice: 'Advertising platform successfully created.'
     else
       render :new
     end
@@ -29,7 +29,7 @@ class AdvertisingPlatformsController < ApplicationController
 
   def update
     if @advertising_platform.update(advertising_platform_params)
-      redirect_to advertising_platforms_url, success: 'Advertising platform successfully updated.'
+      redirect_to advertising_platforms_url, notice: 'Advertising platform successfully updated.'
     else
       render :edit
     end
@@ -37,7 +37,7 @@ class AdvertisingPlatformsController < ApplicationController
 
   def destroy
     @advertising_platform.destroy
-    redirect_to advertising_platforms_url, success: 'Advertising platform successfully destroyed.'
+    redirect_to advertising_platforms_url, notice: 'Advertising platform successfully destroyed.'
   end
 
   def advertisement
