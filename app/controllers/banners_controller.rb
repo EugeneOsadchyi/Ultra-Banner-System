@@ -41,7 +41,7 @@ class BannersController < ApplicationController
 
   def reset
     Banner.reset_counters(params[:id])
-    redirect_to :back, notice: 'Banner successfully reseted.'
+    redirect_to :back, notice: 'Banner successfully resetted.'
   end
 
   def click
