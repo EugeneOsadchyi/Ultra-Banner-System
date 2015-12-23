@@ -9,22 +9,22 @@ class Banner < ActiveRecord::Base
   scope :for_rotation, -> { where(active: true).where('views_count < max_views_count').where.not(image: nil).order(:views_count) }
 
   def enabled?
-    self.active? && self.views_count <= self.max_views_count
+    active? && views_count <= max_views_count
   end
 
   def increment_clicks!
-    self.increment(:clicks_count)
-    self.save
+    increment(:clicks_count)
+    save
   end
 
   def increment_views!
-    self.increment(:views_count)
-    self.save
+    increment(:views_count)
+    save
   end
 
   def reset_counters!
     self.clicks_count = 0
     self.views_count = 0
-    self.save
+    save
   end
 end
