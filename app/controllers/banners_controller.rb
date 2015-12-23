@@ -14,7 +14,7 @@ class BannersController < ApplicationController
   def create
     @banner = @advertising_platform.banners.build(banner_params)
     if @banner.save
-      redirect_to advertising_platform_banner_path(@advertising_platform, @banner), notice: 'Banner successfully created.'
+      redirect_to advertising_platform_banner_path(@advertising_platform, @banner), success: 'Banner successfully created.'
     else
       redirect_to :new
     end
@@ -28,7 +28,7 @@ class BannersController < ApplicationController
 
   def update
     if @banner.update(banner_params)
-      redirect_to advertising_platform_banner_path(@advertising_platform, @banner), notice: 'Banner successfully updated.'
+      redirect_to advertising_platform_banner_path(@advertising_platform, @banner), success: 'Banner successfully updated.'
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class BannersController < ApplicationController
 
   def destroy
     @banner.destroy
-    redirect_to @advertising_platform, notice: 'Banner successfully deleted.'
+    redirect_to @advertising_platform, success: 'Banner successfully deleted.'
   end
 
   def reset
