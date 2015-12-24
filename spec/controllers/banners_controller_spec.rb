@@ -3,6 +3,9 @@ require 'rails_helper'
 RSpec.describe BannersController, type: :controller do
   login_admin
 
+  let(:advertising_platform) { create(:advertising_platform) }
+  let(:banner) { create(:banner) }
+
   describe "GET #index" do
     it "returns http success" # do
 #       get :index, use_route: :advertising_platforms

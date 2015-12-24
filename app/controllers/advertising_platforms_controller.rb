@@ -42,10 +42,12 @@ class AdvertisingPlatformsController < ApplicationController
 
   def advertisement
     if @advertising_platform.active?
-      if @banner = @advertising_platform.relevant_banner
-        Banner.increment_views(@banner.id)
-        render layout: false
-        return
+      Banner.transaction do # Maybe we have the better way
+        if @banner = @advertising_platform.relevant_banner
+          Banner.increment_views(@banner.id)
+          render layout: false
+          return
+        end
       end
     end
     render nothing: true, status: 401

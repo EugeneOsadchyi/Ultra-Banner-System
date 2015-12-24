@@ -5,6 +5,6 @@ class AdvertisingPlatform < ActiveRecord::Base
   validates :url, presence: true, url: true
 
   def relevant_banner
-    banners.for_rotation.first
+    banners.for_rotation.lock.first
   end
 end
