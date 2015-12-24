@@ -13,6 +13,10 @@ class Banner < ActiveRecord::Base
     active? && views_count <= max_views_count
   end
 
+  def increment_views
+    self.views_count += 1 # self.increment(:views_count) is better, but I need to update updated_at value for sort
+  end
+
   def reset_counters!
     update(clicks_count: 0, views_count: 0)
   end

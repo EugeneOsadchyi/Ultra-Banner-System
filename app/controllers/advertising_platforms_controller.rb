@@ -40,15 +40,12 @@ class AdvertisingPlatformsController < ApplicationController
     redirect_to advertising_platforms_url, notice: 'Advertising platform successfully destroyed.'
   end
 
+  # Tested with passenger + ab. It works :)
   def advertisement
     if @advertising_platform.active?
-      Banner.transaction do # Maybe I am wrong
-        if @banner = @advertising_platform.relevant_banner
-          @banner.lock
-          Banner.increment_views(@banner.id)
-          render layout: false
-          return
-        end
+      if @banner = @advertising_platform.view_relevant_banner
+        render layout: false
+        return
       end
     end
     render nothing: true, status: 401
