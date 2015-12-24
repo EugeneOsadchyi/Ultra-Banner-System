@@ -42,8 +42,9 @@ class AdvertisingPlatformsController < ApplicationController
 
   def advertisement
     if @advertising_platform.active?
-      Banner.transaction do # Maybe we have the better way
+      Banner.transaction do # Maybe I am wrong
         if @banner = @advertising_platform.relevant_banner
+          @banner.lock
           Banner.increment_views(@banner.id)
           render layout: false
           return
