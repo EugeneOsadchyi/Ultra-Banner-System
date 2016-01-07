@@ -12,7 +12,11 @@
 
     <div class="collapse navbar-collapse" id="bs-navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></li>
+        <% if admin_signed_in? %>
+          <li><%= link_to "Sign out", destroy_admin_session_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign in", new_admin_session_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>
